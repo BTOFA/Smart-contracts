@@ -14,19 +14,19 @@ contract BTOFAToken is ERC721, ERC721Burnable, ERC721Enumerable, Ownable {
     struct TokenListing {
         uint256 serialNumber;
         uint256 expirationTime;
+        uint256 price;
         uint256 profit;
         bool isPresented;
     }
 
-    uint256 _tokenId = 0;
     mapping(uint256 => TokenListing) mintedTokens;
 
     constructor() ERC721("BTOFAToken", "BTOT") {}
 
-    function emitTokens(uint256 amount, TokenListing memory data) external onlyOwner returns(bool) {
-        for (uint256 i = 0; i < amount; ++i) {
-            mintedTokens[_tokenId] = data;
-            _safeMint(msg.sender, _tokenId++);
+    function emitTokens(uint256 tokenId, uint256 amount, TokenListing memory data) external onlyOwner returns(bool) {
+        for (uint256 i = tokenId; i < amount; ++i) {
+            _safeMint(msg.sender, i);
+            mintedTokens[i] = data;
         }
         return true;
     }
@@ -34,6 +34,11 @@ contract BTOFAToken is ERC721, ERC721Burnable, ERC721Enumerable, Ownable {
     function isExpired(uint256 tokenId) external view returns (bool) {
         require(mintedTokens[tokenId].isPresented, "BTOT: Token with such ID doesn't exist.");
         return mintedTokens[tokenId].expirationTime <= block.timestamp;
+    }
+
+    function getPrice(uint256 tokenId) public view returns(uint256) {
+        require(mintedTokens[tokenId].isPresented, "BTOT: Token with such ID doesn't exist.");
+        return mintedTokens[tokenId].price;
     }
 
     function getProfit(uint256 tokenId) public view returns(uint256) {

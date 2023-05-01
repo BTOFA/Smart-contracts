@@ -157,6 +157,25 @@
 						"type": "uint256"
 					}
 				],
+				"name": "getPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
 				"name": "getProfit",
 				"outputs": [
 					{
@@ -468,11 +487,11 @@
 			]
 		},
 		"contracts/BTOFAManager.sol": {
-			"keccak256": "0x4b7efd5a6e24ae79b20dbfb854c298c1df8b0abcfcb8c43afcb7341ede9643ff",
+			"keccak256": "0x1e31d3d5818d68899612b6039ab40857cc6d3164d6428e457f651f23795026da",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f8d266cc89cb6f817e5d6a3846c17ad1c9adf56f359ab9b445847b439c6f4774",
-				"dweb:/ipfs/QmavuTDihbVy9BdCoUX53s1JDRNq9m4DxxKBqiZjtJWC9x"
+				"bzz-raw://920ba0afa9cafb44cd60335953ec26b8a854f9c8293d7c362aba5da8d223925f",
+				"dweb:/ipfs/QmWcxpRpZkxxykZFTbq2upNCLCj37jgyfoiUr1w7uM4sEJ"
 			]
 		}
 	},

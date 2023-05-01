@@ -10,6 +10,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 interface IBTOFAToken is IERC721 {
     function isExpired(uint256 tokenId) external view returns (bool);
     function burn(uint256 tokenId) external;
+    function getPrice(uint256 tokenId) external view returns(uint256);
     function getProfit(uint256 tokenId) external view returns(uint256);
 }
 
@@ -25,7 +26,7 @@ contract BankManager is IERC721Receiver, Ownable {
     }
 
     function buyToken(uint256 tokenId) external {
-        uint256 price = _BTOFAToken.getProfit(tokenId);
+        uint256 price = _BTOFAToken.getPrice(tokenId);
         require(_BTOFACurrency.balanceOf(msg.sender) >= price, "BTOC: Insufficient amount of tokens.");
         _BTOFACurrency.transferFrom(msg.sender, owner(), price);
         _BTOFAToken.safeTransferFrom(owner(), msg.sender, tokenId);

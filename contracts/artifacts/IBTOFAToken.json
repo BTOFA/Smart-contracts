@@ -53,6 +53,7 @@
 			"balanceOf(address)": "70a08231",
 			"burn(uint256)": "42966c68",
 			"getApproved(uint256)": "081812fc",
+			"getPrice(uint256)": "e7572230",
 			"getProfit(uint256)": "a91b2e9f",
 			"isApprovedForAll(address,address)": "e985e9c5",
 			"isExpired(uint256)": "d9548e53",
@@ -204,6 +205,25 @@
 					"internalType": "address",
 					"name": "operator",
 					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "tokenId",
+					"type": "uint256"
+				}
+			],
+			"name": "getPrice",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
 				}
 			],
 			"stateMutability": "view",

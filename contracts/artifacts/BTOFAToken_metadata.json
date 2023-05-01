@@ -158,6 +158,11 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
 					},
@@ -171,6 +176,11 @@
 							{
 								"internalType": "uint256",
 								"name": "expirationTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
 								"type": "uint256"
 							},
 							{
@@ -227,6 +237,25 @@
 						"type": "uint256"
 					}
 				],
+				"name": "getPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
 				"name": "getProfit",
 				"outputs": [
 					{
@@ -258,6 +287,11 @@
 							{
 								"internalType": "uint256",
 								"name": "expirationTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
 								"type": "uint256"
 							},
 							{
@@ -804,11 +838,11 @@
 			]
 		},
 		"contracts/BTOFAToken.sol": {
-			"keccak256": "0x2906bfe35ba345f33e744eb27283456b39e5ecfd5db7b99b06236cebd2cb15a4",
+			"keccak256": "0x26fa44aac4072165d49e92dd8ff2e2b1a09f40671336ee42f5ed51d14cfc98bc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d5e455b7c77233f0776872ad5582033292089aa05e5fc8a084683614abfdadfd",
-				"dweb:/ipfs/QmWQ31vTbw2WRZ5dVnshEMfauwR19vnZvtSCadasPqC8QR"
+				"bzz-raw://97b81423cc4b81bff80ca851c2545c87fb326e7fb4198191d568cea5059b47a9",
+				"dweb:/ipfs/QmUh6nWjN6P79GNucM1ui1Awxaa6SfN1TbQBXUEXpgArAb"
 			]
 		}
 	},
