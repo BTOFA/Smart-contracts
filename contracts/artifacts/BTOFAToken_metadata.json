@@ -838,11 +838,11 @@
 			]
 		},
 		"contracts/BTOFAToken.sol": {
-			"keccak256": "0x26fa44aac4072165d49e92dd8ff2e2b1a09f40671336ee42f5ed51d14cfc98bc",
+			"keccak256": "0x64afb898d5783e7155ad5f52ffbbc6a76f123e0a1d21bdbfb7ae6ac37391bec2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://97b81423cc4b81bff80ca851c2545c87fb326e7fb4198191d568cea5059b47a9",
-				"dweb:/ipfs/QmUh6nWjN6P79GNucM1ui1Awxaa6SfN1TbQBXUEXpgArAb"
+				"bzz-raw://a20c4760a09b141adae931fdcf990dc18c60796399c2341f207c92a9fd311b79",
+				"dweb:/ipfs/QmehpT1w7uxFteBcYbxbYRPaDvq2A17YCCAnH7BuYnbceM"
 			]
 		}
 	},
