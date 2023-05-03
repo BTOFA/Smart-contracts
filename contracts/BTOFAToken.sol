@@ -24,7 +24,7 @@ contract BTOFAToken is ERC721, ERC721Burnable, ERC721Enumerable, Ownable {
     constructor() ERC721("BTOFAToken", "BTOT") {}
 
     function emitTokens(uint256 tokenId, uint256 amount, TokenListing memory data) external onlyOwner returns(bool) {
-        for (uint256 i = tokenId; i < amount; ++i) {
+        for (uint256 i = tokenId; i < tokenId + amount; ++i) {
             _safeMint(msg.sender, i);
             mintedTokens[i] = data;
         }
