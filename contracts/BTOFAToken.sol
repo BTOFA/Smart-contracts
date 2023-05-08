@@ -4,11 +4,10 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract BTOFAToken is ERC721, ERC721Burnable, ERC721Enumerable, Ownable {
+contract BTOFAToken is ERC721, ERC721Burnable, Ownable {
     using SafeMath for uint256;
 
     struct TokenListing {
@@ -55,14 +54,5 @@ contract BTOFAToken is ERC721, ERC721Burnable, ERC721Enumerable, Ownable {
         _burn(tokenId);
         delete mintedTokens[tokenId];
     }
-
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize)
-    internal override(ERC721, ERC721Enumerable) {
-        super._beforeTokenTransfer(from, to, tokenId, batchSize);
-    }
-
-    function supportsInterface(bytes4 interfaceId) public view
-    override(ERC721, ERC721Enumerable) returns (bool) {
-        return super.supportsInterface(interfaceId);
-    }
+    
 }
