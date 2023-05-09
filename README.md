@@ -1,186 +1,159 @@
 # Smart-contracts
 ## API
-## ERC721 Token smart-contract (BTOT)
+## ERC721 Token smart contract (BTOT)
 ### Structure of token:
-- serialNumber - serial number that token belongs to
+- serialNumber - serial number to which the token belongs
 - expirationTime - timestamp in seconds (GMT)
-- price - IPO price that investor have to pay to buy this token
-- profit - value that investor will get after token's expiration
+- price - IPO price that investor has to pay to buy this token
+- profit - the price at which the bank will buy the token from the investor when it expires.
 - isPresented - this token is presented in mapping (set always as true, this is solidity specifics)
 ### setApprovalForAll - allow Bank Manager to freely work with your tokens without approvals
-Is public
-
-As address pass Bank Manager smart-contract's address, and as approved - true
+***Public***
 ***
-args:
+***Args***
 
 address spender - contract's address
 
-bool approved - whether operator can tranfer tokens without approval
+bool approved - whether operator can transfer tokens without approval
 ***
-returns:
+***Returns***
 
 no return value
 ***
-example:
-["0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8", true]
-
 ### emitTokens - emit new tokens for selling
-Can be executed only from owner wallet address.
+***Only for owner***
 ***
-args:
+***Args***
 
-uint256 tokenId - id of the first token, that would be emitted
+uint256 tokenId - id of the first token that would be emitted
 
 uint256 amount - number of tokens to emit
 
 TokenListing data - token structure
 ***
-returns:
+***Returns***
 
-reverted - one of the token ids is occupied
+reverted - one of the token id-s is occupied
 ***
-example:
-[1, 4, [123223, 1683140580, 20, 25, true]]
 ### isExpired - check if token has expired 
-Is public
+***Public***
 ***
-args:
+***Args***
 
 uint256 tokenId - id of the token you want to check
 ***
-returns:
+***Returns***
 
-bool:
-- true - token is expired
-- false - token hasn't expired yet
+bool - whether token has expired
 
 reverted - token with such id doesn't exist
 ***
-example:
-[1]
 ### getPrice - returns purchase price for the investor
-Is public
+***Public***
 ***
-args:
+***Args***
 
 uint256 tokenId - id of the token
 ***
-returns:
+***Returns***
 
 uint256 - the price of token
 
 reverted - token with such id doesn't exist
 ***
-example:
-[1]
-### getProfit - returns selling price for the investor (is actual profit + initial price)
-Is public
+### getProfit - returns price at which bank will redeem token from investor
+***Public***
 ***
-args:
+***Args***
 
 uint256 tokenId - id of the token
 ***
-returns:
+***Returns***
 
-uint256 - the profit from token
+uint256 - the price of token
 
 reverted - token with such id doesn't exist
 ***
-example:
-[1]
 ### getToken - get TokenListing object
-Is public
+***Public***
 ***
-args:
+***Args***
 
 uint256 tokenId - id of the token
 ***
-returns:
+***Returns***
 
 TokenListing - the token with passed id
 
 reverted - token with such id doesn't exist
 ***
-example:
-[1]
-## ERC20 Currency smart-contract (BTOC)
+## ERC20 Currency smart contract (BTOC)
 ### mint - mint tokens to address
-Can be executed only from owner wallet address.
+***Only for owner***
 ***
-args:
+***Args***
 
 address to - wallet's address to which you want to mint
 
-uint256 amount - number of tokens to emit
+uint256 amount - number of tokens to mint
 ***
+***Returns***
+
 no return value
 ***
-example:
-["0x5B38Da6a701c568545dCfcB03FcB875f56beddC4", 100]
 ### increaseAllowance - allow Bank Manager spend more tokens
-Is public
-
-As address pass Bank Manager smart-contract's address, and as price total price that will be transferred between two addresses
-
-Always invoke before buying
+***Public***
 ***
-args:
+***Args***
 
 address spender - contract's address
 
 uint256 addedValue - allowed amount to spend
 ***
+***Returns***
+
 no return value
 ***
-example:
-["0x5B38Da6a701c568545dCfcB03FcB875f56beddC4", 100]
 ## BankManager
 
 ### constructor
-args:
+***Args***
 
-address currency - address of ERC20 smart-contract
+address currency - address of ERC20 smart contract
 
-address token - address of ERC721 smart-contract
+address token - address of ERC721 smart contract
 
 ### buyToken - buy batch of tokens
-Is public
-
-Function applies to all tokens in the interval
+***Public***
 ***
-args:
+***Args***
 
 uint256 startId - id of the first token (included)
 
 uint256 endId - id of the last token (included)
 ***
-returns:
+***Returns***
 
 reverted - right bound is less than left one
 
 reverted - address that calls this function already owns token with one of the ids in given interval
 
-reverted - payment price exceeds balance
+reverted - payment amount exceeds balance
 
-reverted - payment price exceeds allowed amount to spend from wallet
+reverted - payment amount exceeds allowed amount to spend from wallet
 
 reverted - didn't set allowance to transfer BTOT-s
 ***
-example:
-[1, 3]
-### expireToken - sell batch of tokens (bank is buying back tokens from investors)
-Can be executed only from owner wallet address.
-
-Function applies to all tokens in the interval
+### expireToken - bank redeems tokens from investors
+***Only for owner***
 ***
-args:
+***Args***
 
 uint256 startId - id of the first token (included)
 
 uint256 endId - id of the last token (included)
 ***
-returns:
+***Returns***
 
 reverted - right bound is less than left one
 
@@ -188,11 +161,9 @@ reverted - address that calls this function already owns token with one of the i
 
 reverted - one of the tokens hasn't expired yet
 
-reverted - payment price exceeds balance
+reverted - payment amount exceeds balance
 
-reverted - payment price exceeds allowed amount to spend from wallet
+reverted - payment amount exceeds allowed amount to spend from wallet
 
 reverted - didn't set allowance to transfer BTOT-s
 ***
-example:
-[1, 3]
