@@ -62,8 +62,6 @@ contract BankManager is IERC721Receiver, Ownable {
         // Calculating total price to pay.
         for (uint256 tokenId = startId; tokenId <= endId; ++tokenId) {
             price += _BTOFAToken.getProfit(tokenId);
-            require(owner() != _BTOFAToken.ownerOf(tokenId),
-                    string(abi.encodePacked("BTOT: User already is an owner of token with ID ", Strings.toString(tokenId), ".")));
             require(_BTOFAToken.isExpired(tokenId), "BTOT: Token with such ID hasn't expired yet.");
         }
 
